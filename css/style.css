@@ -1,0 +1,82 @@
+html {
+  scroll-behavior: smooth;
+}
+
+::-webkit-scrollbar {
+  width: 8px;
+}
+::-webkit-scrollbar-track {
+  background: #1b2636; 
+}
+::-webkit-scrollbar-thumb {
+  background: #2f3d52; 
+  border-radius: 4px;
+}
+::-webkit-scrollbar-thumb:hover {
+  background: #475569; 
+}
+
+/* ================= ROADMAP ================= */
+
+details > summary {
+  list-style: none;
+}
+details > summary::-webkit-details-marker {
+  display: none;
+}
+
+details[open] > div {
+  animation: fadeIn 0.3s ease-in-out;
+}
+
+@keyframes fadeIn {
+  from { opacity: 0; transform: translateY(-5px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+/* ================= SCROLL SNAP ================= */
+
+body {
+  scroll-snap-type: y proximity;
+}
+
+/* Home, Features, Roadmap */
+main > section {
+  min-height: 100vh;
+  
+  padding-top: calc(4rem + 2rem);
+  padding-bottom: 2rem;
+  
+  scroll-snap-align: start;
+  
+  display: flex;
+  flex-direction: column;
+  justify-content: center; 
+}
+
+/* Contacta + Support ) */
+.snap-group {
+  min-height: 100vh;
+  scroll-snap-align: start;
+  display: flex;
+  flex-direction: column;
+  
+  padding-top: calc(4rem + 2rem);
+  padding-bottom: 2rem;
+  
+  justify-content: center; 
+}
+
+@media (max-width: 768px) {
+  body {
+    scroll-snap-type: none;
+  }
+  
+  main > section,
+  .snap-group {
+    min-height: auto;
+    padding-top: 6rem;
+    padding-bottom: 4rem;
+    justify-content: flex-start;
+  }
+}

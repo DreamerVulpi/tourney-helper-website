@@ -1,0 +1,52 @@
+{
+  "nav": {
+    "home": "Home",
+    "roadmap": "Roadmap",
+    "contacts": "Contacts",
+    "features": "Features"
+  },
+  "features": {
+      "title": "Features"
+  },
+  "header": {
+    "support": "Support",
+    "repo": "Repository"
+  },
+  "home": {
+    "title": "TOURNEY<span class=\"text-blue-600\">HELPER</span>",
+    "subtitle": "A universal toolkit to simplify tournament organization. Created by a tournament organizer for tournament organizers",
+    "ctaRoadmap": "View roadmap",
+    "ctaSupport": "Support project",
+    "ctaFeatures": "View features"
+  },
+  "roadmap": {
+    "title": "Roadmap",
+    "currentVersion": "Latest",
+    "lead": "Planned updates and progress",
+    "download": "Download for Windows x64",
+    "loading": "Loading data...",
+    "status": {
+      "released": "Released",
+      "in-progress": "In Progress",
+      "planned": "Planned"
+    }
+  },
+  "contacts": {
+    "title": "Contacts",
+    "lead": "Get in touch with the author"
+  },
+  "support": {
+    "title": "Support",
+    "lead": "If the project was useful to you, you can support its development.",
+    "reportBug": "Suggest an idea / Report a bug",
+    "telegram": "Telegram news Channel",
+    "donatepay": "DonatePay",
+    "boosty": "Boosty"
+  },
+  "footer": {
+    "note": "Distributed under the MIT License"
+  },
+  "errors": {
+    "roadmapLoad": "Error loading data. Please try again later"
+  }
+}

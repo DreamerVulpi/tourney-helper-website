@@ -1,0 +1,23 @@
+{
+  "version": "0.5.0",
+  "status": "in-progress",
+  "date_range": "Q4 2026",
+  "title": {
+    "ru": "Новый виджет, улучшение OAuth авторизации, система профилей",
+    "en": "New widget, OAuth authorization improvements, profile system"
+  },
+  "details": {
+    "ru": [
+        "Новый виджет \"Турнирная сетка\";",
+        "Переработанная система \"OAuth\" авторизации;",
+        "Система профилей программы с возможностью импортировать и экспортировать;",
+        "Улучшения использования UI, исправление багов и другое;"
+    ],
+    "en": [
+        "New “Tournament Bracket” widget;",
+        "Revamped “OAuth” authentication system;",
+        "Program profile system with import and export capabilities;",
+        "UI improvements, bug fixes, and more;"
+    ]
+  }
+}

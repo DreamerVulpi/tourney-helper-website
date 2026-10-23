@@ -1,0 +1,38 @@
+{
+  "version": "0.4.0",
+  "status": "released",
+  "date": "2026-08-29",
+  "current": true,
+  "download_url": "https://github.com/DreamerVulpi/tourney-helper/releases/download/v0.4.0/TourneyHelper-v0.4.0-Windows-x64.zip",
+  "title": {
+    "ru": "Улучшение системы рассылки уведомлений и улучшение взаимодействия с UI",
+    "en": "Improvements to the notification system and UI interaction"
+  },
+  "details": {
+    "ru": [
+        "Переработан интерфейс вкладки \"База данных игроков\". Теперь корректно масштабируется;",
+        "Повышена скорость рассылки уведомлений до 50-60 сообщений за 1 минуту;",
+        "Добавлен мониторинг рассылки уведомлений во время его работы в реальном времени;",
+        "Добавлена механика встроенного обновления через GitHub. В случае нового обновления - программа уведомит об обновлении с описанием патча на соответствующем языке. Данную опцию можно отключить навсегда или на одну версию во вкладке \"Инфо\";",
+        "Добавлена возможность скрыть панель инструментов (навести курсором на область 1 секунду, тогда появится кнопка скрытия);",
+        "Добавлена возможность выбрать стандартный язык для рассылки сообщений;",
+        "Добавлено текстовое поле в сообщении приглашения - \"Ссылка на лобби\";",
+        "Добавлены статус-индикаторы для всех инструментов;",
+        "Добавлены тесты (для разработки);",
+        "Исправлено множество ошибок, повышена производительность и взаимодействие с интерфейсом программы;"
+    ],
+    "en": [
+        "Refactored the backend to a Clean Architecture;",
+        "Added a desktop user interface with light and dark theme support;",
+        "Renamed the project from tourneyBot to TourneyHelper;",
+        "Added Help and About windows;",
+        "Added English localization;",
+        "Improved the logging system;",
+        "Updated the project branding and application icons;",
+        "Added a participant database;",
+        "Added support for importing participant data from CSV and JSON files;",
+        "Improved OAuth support;",
+        "Numerous bug fixes and UI improvements."
+    ]
+  }
+}

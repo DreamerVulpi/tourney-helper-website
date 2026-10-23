@@ -1,0 +1,19 @@
+{
+  "version": "0.6.0",
+  "status": "planned",
+  "date_range": "Q4 2026",
+  "title": {
+    "ru": "Новый виджет",
+    "en": "New widget"
+  },
+  "details": {
+    "ru": [
+        "Новый виджет \"Счет матча\";",
+        "Улучшения использования UI, исправление багов и другое;"
+    ],
+    "en": [
+        "New \"Match Score\" widget;",
+        "UI improvements, bug fixes, and more;"
+    ]
+  }
+}

@@ -1,0 +1,62 @@
+[
+    {
+        "id": "selfhosted",
+        "icon": "monitor-pc",
+        "title": {
+            "ru": "Self-hosted приложение",
+            "en": "Self-hosted application"
+        },
+        "description": {
+            "ru": "Весь функционал работает на вашем устройстве локально без посредников. Единственная связь извне - это поддерживаемые сторонние интеграции. Работа приложения практически полностью под вашим контролем",
+            "en": "All features run locally on your device without any intermediaries. The only external connection is through supported third-party integrations. You have almost complete control over how the app works"
+        }
+    },
+    {
+        "id": "integrations",
+        "icon": "user-round-cog",
+        "title": {
+            "ru": "Поддержка сторонних интеграций",
+            "en": "Support for Third-Party Integrations"
+        },
+        "description": {
+            "ru": "Некоторые инструменты/виджеты имеют возможность использовать данные с разных сервисов. На текущий момент имеется поддержка \"startgg\" и \"Discord\"",
+            "en": "Some tools/widgets can use data from different services. Currently, support is available for \"startgg\" and \"Discord\""
+        }
+    },
+    {
+        "id": "database",
+        "icon": "database",
+        "title": {
+            "ru": "База данных игроков",
+            "en": "Player database"
+        },
+        "description": {
+            "ru": "Хранилище игроков с их данными. Данные можно добавить самостоятельно или импортировать файлами. Также присутствует автоматическое сохранение/актуализация данных от инструмента \"Рассылка уведомлений\"",
+            "en": "A database of players and their information. You can add data manually or import it via files. Data is also automatically saved and updated by the \"Notification Mailing\" tool"
+        }
+    },
+    {
+        "id": "rating&Banlist",
+        "icon": "list",
+        "title": {
+            "ru": "Учет рейтинговой лиги и бан-листа",
+            "en": "Tracking the Rating League and Ban List"
+        },
+        "description": {
+            "ru": "Имеется возможность вести учет игроков по очкам лиги, а также бан-лист с подробным описанием нарушителей",
+            "en": "You can keep track of players based on their league points, as well as maintain a ban list with detailed descriptions of each offenders"
+        }
+    },
+    {
+        "id": "notifications",
+        "icon": "send",
+        "title": {
+            "ru": "Рассылка уведомлений",
+            "en": "Notifications Mailing"
+        },
+        "description": {
+        "ru": "Система, используя данные с выбранной турнирной платформой и методом, рассылает сообщения-приглашения участникам турнира.",
+        "en": "The system uses data from the selected tournament platform and method to send invitation messages to tournament participants."
+        }
+    }
+]

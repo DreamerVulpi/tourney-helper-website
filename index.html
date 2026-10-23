@@ -1,0 +1,252 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Tourney Helper</title>
+
+  <!-- Font Inter -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;700;900&display=swap" rel="stylesheet">
+
+  <!-- Tailwind CSS -->
+  <script src="https://cdn.tailwindcss.com"></script>
+  
+  <!-- Icons (Lucide) -->
+  <script src="https://unpkg.com/lucide@latest"></script>
+
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          fontFamily: {
+            sans: ['Inter', 'sans-serif'],
+          }
+        }
+      }
+    }
+  </script>
+  <link rel="stylesheet" href="css/style.css">
+</head>
+<body class="bg-[#050505] text-white font-sans antialiased min-h-screen flex flex-col selection:bg-blue-600/30">
+
+  <!-- ================= HEADER ================= -->
+  <header class="h-[4rem] flex items-center justify-between px-4 shrink-0 border-b border-white/5 bg-[#0a0a0a] z-50 sticky top-0">
+    
+    <!-- Left: Navigation -->
+    <div class="flex items-center gap-6">
+      <!-- Logo -->
+      <a href="#home" class="flex items-center gap-[0.4rem] select-none shrink-0 group">
+        <div class="p-1.5 bg-blue-600/10 rounded-lg shrink-0 group-hover:bg-blue-600/20 transition-colors border border-blue-600/20">
+          <img src="data/branding/icons/256.png" alt="Logo" class="w-5 h-5 object-contain" onerror="this.style.display='none'; this.nextElementSibling.style.display='block';">
+          <i data-lucide="trophy" class="w-5 h-5 text-blue-500 hidden"></i>
+        </div>
+        <div class="shrink-0 whitespace-nowrap">
+          <span class="font-black italic text-base tracking-tighter uppercase text-white">
+            <span>TOURNEY</span><span class="text-blue-600">HELPER</span>
+          </span>
+        </div>
+      </a>
+
+      <div class="w-px h-6 bg-white/5 hidden lg:block"></div>
+
+      <!-- Links -->
+      <nav class="hidden xl:flex items-center gap-1" id="primary-nav">
+        <a href="#home" class="px-3 py-2 rounded-xl text-[11px] font-black uppercase tracking-[0.1em] italic text-slate-400 hover:bg-white/5 hover:text-white transition-all" data-i18n="nav.home">Главная</a>
+        <a href="#features" class="px-3 py-2 rounded-xl text-[11px] font-black uppercase tracking-[0.1em] italic text-slate-400 hover:bg-white/5 hover:text-white transition-all" data-i18n="nav.features">Возможности</a>
+        <a href="#roadmap" class="px-3 py-2 rounded-xl text-[11px] font-black uppercase tracking-[0.1em] italic text-slate-400 hover:bg-white/5 hover:text-white transition-all" data-i18n="nav.roadmap">Планы</a>
+        <a href="#contacts" class="px-3 py-2 rounded-xl text-[11px] font-black uppercase tracking-[0.1em] italic text-slate-400 hover:bg-white/5 hover:text-white transition-all" data-i18n="nav.contacts">Контакты</a>
+      </nav>
+    </div>
+
+    <!-- Rigth: Language, Button -->
+    <div class="flex items-center gap-2">
+      
+      <!-- Repository (GitHub) -->
+      <a href="https://github.com/DreamerVulpi/tourney-helper" target="_blank" rel="noopener" class="hidden sm:flex items-center justify-center gap-2 bg-slate-800 border border-white/10 hover:border-blue-500/50 hover:bg-slate-700 text-slate-300 hover:text-white text-[11px] font-black uppercase tracking-[0.1em] px-4 h-8 rounded-lg transition-colors" title="GitHub Repository">
+        <svg class="w-4 h-4" fill="currentColor" viewBox="0 0 24 24" aria-hidden="true">
+          <path fill-rule="evenodd" d="M12 2C6.477 2 2 6.484 2 12.017c0 4.425 2.865 8.18 6.839 9.504.5.092.682-.217.682-.483 0-.237-.008-.868-.013-1.703-2.782.605-3.369-1.343-3.369-1.343-.454-1.158-1.11-1.466-1.11-1.466-.908-.62.069-.608.069-.608 1.003.07 1.531 1.032 1.531 1.032.892 1.53 2.341 1.088 2.91.832.092-.647.35-1.088.636-1.338-2.22-.253-4.555-1.113-4.555-4.951 0-1.093.39-1.988 1.029-2.688-.103-.253-.446-1.272.098-2.65 0 0 .84-.27 2.75 1.026A9.564 9.564 0 0112 6.844c.85.004 1.705.115 2.504.337 1.909-1.296 2.747-1.027 2.747-1.027.546 1.379.202 2.398.1 2.651.64.7 1.028 1.595 1.028 2.688 0 3.848-2.339 4.695-4.566 4.943.359.309.678.92.678 1.855 0 1.338-.012 2.419-.012 2.747 0 .268.18.58.688.482A10.019 10.019 0 0022 12.017C22 6.484 17.522 2 12 2z" clip-rule="evenodd" />
+        </svg>
+        <span data-i18n="header.repo">Репозиторий</span>
+      </a>
+      <!-- Switch language -->
+      <div class="relative">
+        <button type="button" id="lang-btn" class="flex items-center justify-between gap-2 bg-slate-800 border border-white/10 hover:border-white/20 text-xs font-bold px-3 py-1.5 rounded-lg transition-colors h-8 min-w-[4rem]" aria-haspopup="listbox" aria-expanded="false">
+          <i data-lucide="languages" class="w-3.5 h-3.5 text-slate-400"></i>
+          <span id="lang-current">RU</span>
+          <i data-lucide="chevron-down" class="w-3 h-3 text-slate-400"></i>
+        </button>
+        <ul id="lang-menu" class="absolute right-0 mt-2 w-32 bg-[#121212] border border-white/10 rounded-lg shadow-xl py-1 hidden z-50" role="listbox">
+          <li><button type="button" class="block w-full text-left px-4 py-2 text-xs font-bold text-slate-300 hover:bg-white/5 hover:text-white transition-colors" data-lang="ru">Русский</button></li>
+          <li><button type="button" class="block w-full text-left px-4 py-2 text-xs font-bold text-slate-300 hover:bg-white/5 hover:text-white transition-colors" data-lang="en">English</button></li>
+        </ul>
+      </div>
+
+      <!-- Support button -->
+      <a href="#support" class="hidden sm:flex items-center justify-center gap-2 bg-blue-600 hover:bg-blue-500 text-white text-[11px] font-black uppercase tracking-[0.1em] px-4 h-8 rounded-lg transition-colors" data-i18n="header.support">
+        <i data-lucide="heart-handshake" class="w-3.5 h-3.5"></i>
+        <span>Поддержать</span>
+      </a>
+
+      <!-- Burger -->
+      <button type="button" id="burger" class="xl:hidden p-1.5 text-slate-400 hover:text-white rounded-lg hover:bg-white/5 transition-colors" aria-expanded="false">
+        <i data-lucide="menu" class="w-5 h-5"></i>
+      </button>
+    </div>
+  </header>
+
+  <!-- ================= MOBILE MENU ================= -->
+  <div id="mobile-menu" class="xl:hidden hidden border-b border-white/5 bg-[#0a0a0a] absolute w-full left-0 shadow-xl z-40 top-[4rem]">
+    <div class="flex flex-col px-4 py-4 space-y-1">
+      <a href="#home" class="px-3 py-2 rounded-xl text-[11px] font-black uppercase tracking-[0.1em] italic text-slate-400 hover:bg-white/5 hover:text-white" data-i18n="nav.home">Главная</a>
+      <a href="#features" class="px-3 py-2 rounded-xl text-[11px] font-black uppercase tracking-[0.1em] italic text-slate-400 hover:bg-white/5 hover:text-white" data-i18n="nav.features">Возможности</a>
+      <a href="#roadmap" class="px-3 py-2 rounded-xl text-[11px] font-black uppercase tracking-[0.1em] italic text-slate-400 hover:bg-white/5 hover:text-white" data-i18n="nav.roadmap">Планы</a>
+      <a href="#contacts" class="px-3 py-2 rounded-xl text-[11px] font-black uppercase tracking-[0.1em] italic text-slate-400 hover:bg-white/5 hover:text-white" data-i18n="nav.contacts">Контакты</a>
+      <hr class="border-white/5 my-2">
+      <a href="#support" class="flex items-center justify-center gap-2 bg-blue-600 text-white text-[11px] font-black uppercase tracking-[0.1em] px-4 py-2 rounded-lg" data-i18n="header.support">
+        <i data-lucide="heart-handshake" class="w-3.5 h-3.5"></i>
+        <span>Поддержать</span>
+      </a>
+    </div>
+  </div>
+
+  <!-- ================= MAIN ================= -->
+  <main class="flex-grow">
+    
+    <!-- HOME -->
+    <section id="home" class="max-w-5xl mx-auto px-4 flex flex-col items-center text-center">
+      <div class="mb-8 relative group">
+        <div class="absolute inset-0 bg-blue-600 blur-2xl opacity-20 group-hover:opacity-40 transition-opacity duration-500 rounded-full"></div>
+        <img 
+          src="data/branding/icons/256.png" 
+          alt="Tourney Helper Logo" 
+          class="relative w-28 h-28 md:w-36 md:h-36 object-contain shadow-[0_0_40px_rgba(37,99,235,0.3)] transition-transform duration-300 group-hover:scale-105"
+          onerror="this.style.display='none'; this.nextElementSibling.style.display='flex';"
+        >
+        <div class="relative hidden w-28 h-28 md:w-36 md:h-36 border border-white/10 shadow-[0_0_30px_rgba(37,99,235,0.2)] bg-[#111111] items-center justify-center transition-transform duration-300 group-hover:scale-105">
+          <i data-lucide="trophy" class="w-12 h-12 md:w-16 md:h-16 text-blue-500"></i>
+        </div>
+      </div>
+
+      <h1 class="text-4xl md:text-6xl font-black italic tracking-tighter uppercase mb-6 text-white" data-i18n="home.title">
+        TOURNEY<span class="text-blue-600">HELPER</span>
+      </h1>
+      <p class="text-base md:text-lg text-slate-400 max-w-2xl mb-10" data-i18n="home.subtitle">
+        Универсальный набор инструментов для упрощения организации турниров. Создан организатором турниров для организаторов турниров.
+      </p>
+      <div class="flex flex-col sm:flex-row gap-3">
+        <a href="#features" class="bg-[#1d293d] border border-white/10 hover:bg-[#2a3a55] text-slate-300 hover:text-white text-[12px] font-black uppercase tracking-[0.1em] px-6 py-2.5 rounded-xl transition-colors" data-i18n="home.ctaFeatures">
+          Смотреть возможности
+        </a>
+        <a href="#support" class="bg-blue-600 hover:bg-blue-500 text-white text-[12px] font-black uppercase tracking-[0.1em] px-6 py-2.5 rounded-xl transition-colors" data-i18n="home.ctaSupport">
+          Поддержать
+        </a>
+      </div>
+    </section>
+
+    <!-- FEATURES -->
+    <section id="features" class="max-w-5xl mx-auto px-4 ">
+      <h2 class="text-3xl font-black italic uppercase tracking-tighter text-center mb-10 text-white" data-i18n="features.title">Возможности</h2>
+      <p class="sr-only" data-i18n="features.lead">Ключевые функции, которые упрощают организацию турниров.</p>
+      
+      <!-- Сетка для фич -->
+      <div id="features-list" class="grid grid-cols-1 md:grid-cols-2 gap-4">
+        <div class="bg-[#111111] border border-white/10 rounded-xl p-6 text-center text-slate-400 col-span-full">
+          Загрузка данных...
+        </div>
+      </div>
+    </section>
+
+    <!-- ROADMAP -->
+    <section id="roadmap" class="max-w-4xl mx-auto px-4 ">
+      <h2 class="text-3xl font-black italic uppercase tracking-tighter text-center mb-10 text-white" data-i18n="roadmap.title">Планы</h2>
+      <p class="sr-only" data-i18n="roadmap.lead">Запланированные обновления и прогресс.</p>
+      
+      <div id="roadmap-list" class="flex flex-col gap-4">
+        <div class="bg-[#111111] border border-white/10 rounded-xl p-6 text-center text-slate-400">
+          Загрузка данных...
+        </div>
+      </div>
+    </section>
+
+    <div class="snap-group w-full">
+      <!-- CONTACTS -->
+      <section id="contacts" class="max-w-4xl mx-auto px-4 mb-16">
+        <h2 class="text-3xl font-black italic uppercase tracking-tighter text-center mb-10 text-white" data-i18n="contacts.title">Контакты</h2>
+        <p class="sr-only" data-i18n="contacts.lead">Связаться с автором.</p>
+        
+        <div class="flex flex-wrap justify-center gap-3">
+          <!-- GitHub -->
+          <a href="https://github.com/DreamerVulpi" target="_blank" rel="noopener" class="flex items-center gap-2 bg-[#111111] border border-white/10 hover:border-blue-500/50 px-6 py-3 rounded-xl transition-colors">
+            <svg class="w-4 h-4 text-slate-400" fill="currentColor" viewBox="0 0 24 24" aria-hidden="true">
+              <path fill-rule="evenodd" d="M12 2C6.477 2 2 6.484 2 12.017c0 4.425 2.865 8.18 6.839 9.504.5.092.682-.217.682-.483 0-.237-.008-.868-.013-1.703-2.782.605-3.369-1.343-3.369-1.343-.454-1.158-1.11-1.466-1.11-1.466-.908-.62.069-.608.069-.608 1.003.07 1.531 1.032 1.531 1.032.892 1.53 2.341 1.088 2.91.832.092-.647.35-1.088.636-1.338-2.22-.253-4.555-1.113-4.555-4.951 0-1.093.39-1.988 1.029-2.688-.103-.253-.446-1.272.098-2.65 0 0 .84-.27 2.75 1.026A9.564 9.564 0 0112 6.844c.85.004 1.705.115 2.504.337 1.909-1.296 2.747-1.027 2.747-1.027.546 1.379.202 2.398.1 2.651.64.7 1.028 1.595 1.028 2.688 0 3.848-2.339 4.695-4.566 4.943.359.309.678.92.678 1.855 0 1.338-.012 2.419-.012 2.747 0 .268.18.58.688.482A10.019 10.019 0 0022 12.017C22 6.484 17.522 2 12 2z" clip-rule="evenodd" />
+            </svg>
+            <span class="font-bold text-sm text-slate-300">GitHub</span>
+          </a>
+          
+          <!-- Telegram -->
+          <a href="https://t.me/DreamerVulpi" target="_blank" rel="noopener" class="flex items-center gap-2 bg-[#111111] border border-white/10 hover:border-blue-500/50 px-6 py-3 rounded-xl transition-colors">
+            <svg class="w-4 h-4 text-slate-400" fill="currentColor" viewBox="0 0 24 24" aria-hidden="true">
+              <path d="M11.944 0A12 12 0 0 0 0 12a12 12 0 0 0 12 12 12 12 0 0 0 12-12A12 12 0 0 0 12 0a12 12 0 0 0-.056 0zm4.962 7.224c.1-.002.321.023.465.14a.506.506 0 0 1 .171.325c.016.093.036.306.02.472-.18 1.898-.962 6.502-1.36 8.627-.168.9-.499 1.201-.82 1.23-.696.065-1.225-.46-1.9-.902-1.056-.693-1.653-1.124-2.678-1.8-1.185-.78-.417-1.21.258-1.91.177-.184 3.247-2.977 3.307-3.23.007-.032.014-.15-.056-.212s-.174-.041-.249-.024c-.106.024-1.793 1.14-5.061 3.345-.48.33-.913.49-1.302.48-.428-.008-1.252-.241-1.865-.44-.752-.245-1.349-.374-1.297-.789.027-.216.325-.437.893-.663 3.498-1.524 5.83-2.529 6.998-3.014 3.332-1.386 4.025-1.627 4.476-1.635z" />
+            </svg>
+            <span class="font-bold text-sm text-slate-300">Telegram</span>
+          </a>
+        </div>
+      </section>
+
+      <!-- SUPPORT -->
+      <section id="support" class="max-w-4xl mx-auto px-4 mt-16">
+        <h2 class="text-3xl font-black italic uppercase tracking-tighter text-center mb-4 text-white" data-i18n="support.title">Поддержка</h2>
+        <p class="text-slate-400 text-center mb-10" data-i18n="support.lead">Если проект был полезен, то можете поддержать разработку.</p>
+        
+        <!-- Bracket of buttons -->
+        <div class="grid grid-cols-1 md:grid-cols-2 gap-4 max-w-2xl mx-auto">
+          <!-- Idea / Bug -->
+          <a href="https://github.com/DreamerVulpi/tourney-helper/issues" target="_blank" rel="noopener" class="flex items-center gap-3 bg-[#111111] border border-white/10 hover:border-blue-500/50 px-6 py-4 rounded-xl transition-colors group">
+            <svg class="w-5 h-5 text-slate-400 group-hover:text-blue-500 transition-colors" fill="currentColor" viewBox="0 0 24 24" aria-hidden="true">
+              <path fill-rule="evenodd" d="M12 2C6.477 2 2 6.484 2 12.017c0 4.425 2.865 8.18 6.839 9.504.5.092.682-.217.682-.483 0-.237-.008-.868-.013-1.703-2.782.605-3.369-1.343-3.369-1.343-.454-1.158-1.11-1.466-1.11-1.466-.908-.62.069-.608.069-.608 1.003.07 1.531 1.032 1.531 1.032.892 1.53 2.341 1.088 2.91.832.092-.647.35-1.088.636-1.338-2.22-.253-4.555-1.113-4.555-4.951 0-1.093.39-1.988 1.029-2.688-.103-.253-.446-1.272.098-2.65 0 0 .84-.27 2.75 1.026A9.564 9.564 0 0112 6.844c.85.004 1.705.115 2.504.337 1.909-1.296 2.747-1.027 2.747-1.027.546 1.379.202 2.398.1 2.651.64.7 1.028 1.595 1.028 2.688 0 3.848-2.339 4.695-4.566 4.943.359.309.678.92.678 1.855 0 1.338-.012 2.419-.012 2.747 0 .268.18.58.688.482A10.019 10.019 0 0022 12.017C22 6.484 17.522 2 12 2z" clip-rule="evenodd" />
+            </svg>
+            <span class="font-bold text-sm text-slate-300 group-hover:text-white transition-colors" data-i18n="support.reportBug">Предложить идею / Сообщить о баге</span>
+          </a>
+
+          <!-- Channel in Telegram -->
+          <a href="https://t.me/+reGyKe0VvXY1NTky" target="_blank" rel="noopener" class="flex items-center gap-3 bg-[#111111] border border-white/10 hover:border-blue-500/50 px-6 py-4 rounded-xl transition-colors group">
+            <svg class="w-5 h-5 text-slate-400 group-hover:text-blue-500 transition-colors" fill="currentColor" viewBox="0 0 24 24" aria-hidden="true">
+              <path d="M11.944 0A12 12 0 0 0 0 12a12 12 0 0 0 12 12 12 12 0 0 0 12-12A12 12 0 0 0 12 0a12 12 0 0 0-.056 0zm4.962 7.224c.1-.002.321.023.465.14a.506.506 0 0 1 .171.325c.016.093.036.306.02.472-.18 1.898-.962 6.502-1.36 8.627-.168.9-.499 1.201-.82 1.23-.696.065-1.225-.46-1.9-.902-1.056-.693-1.653-1.124-2.678-1.8-1.185-.78-.417-1.21.258-1.91.177-.184 3.247-2.977 3.307-3.23.007-.032.014-.15-.056-.212s-.174-.041-.249-.024c-.106.024-1.793 1.14-5.061 3.345-.48.33-.913.49-1.302.48-.428-.008-1.252-.241-1.865-.44-.752-.245-1.349-.374-1.297-.789.027-.216.325-.437.893-.663 3.498-1.524 5.83-2.529 6.998-3.014 3.332-1.386 4.025-1.627 4.476-1.635z" />
+            </svg>
+            <span class="font-bold text-sm text-slate-300 group-hover:text-white transition-colors" data-i18n="support.telegram">Новостной канал в Telegram</span>
+          </a>
+
+          <!-- DonatePay -->
+          <a href="https://new.donatepay.ru/donate/dreamervulpi" target="_blank" rel="noopener" class="flex items-center gap-3 bg-[#111111] border border-white/10 hover:border-blue-500/50 px-6 py-4 rounded-xl transition-colors group">
+            <i data-lucide="banknote" class="w-5 h-5 text-slate-400 group-hover:text-blue-500 transition-colors"></i>
+            <span class="font-bold text-sm text-slate-300 group-hover:text-white transition-colors" data-i18n="support.donatepay">DonatePay</span>
+          </a>
+
+          <!-- Boosty -->
+          <a href="https://boosty.to/dreamervulpi" target="_blank" rel="noopener" class="flex items-center gap-3 bg-[#111111] border border-white/10 hover:border-blue-500/50 px-6 py-4 rounded-xl transition-colors group">
+            <i data-lucide="mail" class="w-5 h-5 text-slate-400 group-hover:text-blue-500 transition-colors"></i>
+            <span class="font-bold text-sm text-slate-300 group-hover:text-white transition-colors" data-i18n="support.boosty">Boosty</span>
+          </a>
+        </div>
+      </section>
+    </div>
+  </main>
+
+   <!-- ================= FOOTER ================= -->
+  <footer class="border-t border-white/5 py-6 mt-12 bg-[#080808]/90">
+    <div class="max-w-5xl mx-auto px-4 flex flex-col md:flex-row justify-between items-center gap-2 text-[11px] text-slate-500 font-bold uppercase tracking-wider">
+      <p>© <span id="year"></span> Tourney Helper</p>
+      <a href="https://github.com/DreamerVulpi/tourney-helper/blob/main/LICENSE" target="_blank" rel="noopener" class="hover:text-blue-500 transition-colors" data-i18n="footer.note">
+        Проект распространяется по лицензии MIT
+      </a>
+    </div>
+  </footer>
+
+  <script src="js/main.js" defer></script>
+  <script>
+    lucide.createIcons();
+  </script>
+</body>
+</html>
