@@ -1,0 +1,19 @@
+{
+  "version": "0.9.0",
+  "status": "planned",
+  "date_range": "Q1-Q2 2027",
+  "title": {
+    "ru": "Новый инструмент",
+    "en": "New tool"
+  },
+  "details": {
+    "ru": [
+        "Новый инструмент \"Запись экрана\";",
+        "Улучшения использования UI, исправление багов и другое;"
+    ],
+    "en": [
+        "New \"Electronic Queue\" widget;",
+        "UI improvements, bug fixes, and more;"
+    ]
+  }
+}

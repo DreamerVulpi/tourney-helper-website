@@ -1,0 +1,21 @@
+{
+  "version": "0.7.0",
+  "status": "planned",
+  "date_range": "Q1 2027",
+  "title": {
+    "ru": "Новый виджет, Система подсказок в UI;",
+    "en": "New widget, the UI's tooltip system"
+  },
+  "details": {
+    "ru": [
+        "Новый виджет \"Электронная очередь\";",
+        "Система подсказок в UI;",
+        "Улучшения использования UI, исправление багов и другое;"
+    ],
+    "en": [
+        "New \"Electronic Queue\" widget;",
+        "The UI's tooltip system;",
+        "UI improvements, bug fixes, and more;"
+    ]
+  }
+}

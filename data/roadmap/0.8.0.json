@@ -1,0 +1,23 @@
+{
+  "version": "0.8.0",
+  "status": "planned",
+  "date_range": "Q1 2027",
+  "title": {
+    "ru": "Переработка инструмента \"Рассылка уведомлений\", улучшение инструмента \"База данных игроков\", поддержка новых интеграций",
+    "en": "Redesign of the \"Notification Mailing\" tool, improvements to the \"Player Database\" tool, support for new integrations"
+  },
+  "details": {
+    "ru": [
+        "Переработка инструмента \"Рассылка уведомлений\". Расширение функционала и оптимизация;",
+        "Улучшение инструмента \"База данных игроков\". Расширение функционала.",
+        "Новые интеграции: Challonge, Toornament, Telegram, Email;",
+        "Улучшения использования UI, исправление багов и другое;"
+    ],
+    "en": [
+        "Redesign of the \"Send Notifications\" tool. Expansion of functionality and optimization;",
+        "Improvements to the \"Player Database\" tool. Expanded functionality.",
+        "New integrations: Challonge, Toornament, Telegram, Email;",
+        "UI improvements, bug fixes, and more;"
+    ]
+  }
+}

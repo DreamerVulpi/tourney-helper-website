@@ -25,6 +25,10 @@
     "lead": "Planned updates and progress",
     "download": "Download for Windows x64",
     "loading": "Loading data...",
+    "groups": {
+      "planned": "Planned",
+      "released": "Past versions"
+    },
     "status": {
       "released": "Released",
       "in-progress": "In Progress",

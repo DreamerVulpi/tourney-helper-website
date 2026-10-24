@@ -116,15 +116,31 @@ document.addEventListener('DOMContentLoaded', () => {
     }
   }
 
-    function renderRoadmap() {
+      function renderRoadmap() {
     const container = document.getElementById('roadmap-list');
     if (!container || !roadmapData.length) return;
 
     container.innerHTML = '';
 
-    roadmapData.forEach((item) => {
-      const isCurrent = item.current === true;
+    // 1. Сортируем все данные по убыванию версии (сначала новые)
+    const sortedData = [...roadmapData].sort((a, b) => 
+      b.version.localeCompare(a.version, undefined, { numeric: true })
+    );
 
+    // 2. Распределяем по категориям
+    const currentVersion = sortedData.find(item => item.current === true);
+    const inProgressVersion = sortedData.find(item => item.status === 'in-progress');
+    
+    // Для запланированных сортируем по возрастанию (сначала ближайшие)
+    const plannedVersions = sortedData
+      .filter(item => item.status === 'planned')
+      .sort((a, b) => a.version.localeCompare(b.version, undefined, { numeric: true }));
+      
+    // Для прошлых оставляем сортировку по убыванию (сначала самые свежие)
+    const releasedVersions = sortedData.filter(item => item.status === 'released' && item.current !== true);
+
+    // 3. Функция создания обычной карточки (для Актуальной и В процессе)
+    const createCard = (item, isInsideGroup = false) => {
       let statusColor = "bg-slate-500";
       let iconName = "calendar-clock";
       let iconColor = "text-slate-400";
@@ -137,16 +153,13 @@ document.addEventListener('DOMContentLoaded', () => {
         statusColor = "bg-blue-500";
         iconName = "timer";
         iconColor = "text-blue-500";
-      } else if (item.status === 'planned') {
-        statusColor = "bg-slate-500";
-        iconName = "calendar-clock";
-        iconColor = "text-slate-400";
       }
 
       const statusText = translations?.roadmap?.status?.[item.status] || item.status;
       const dateStr = item.date || item.date_range || '';
       const titleStr = item.title[currentLang] || item.title['en'];
       const detailsArray = item.details[currentLang] || item.details['en'];
+      const isCurrent = item.current === true;
 
       const currentBadge = isCurrent 
         ? `<span class="inline-block w-max px-2 py-0.5 text-[9px] font-black uppercase tracking-wider bg-white text-blue-600 rounded shadow-sm">${translations?.roadmap?.currentVersion || 'Latest'}</span>` 
@@ -178,15 +191,19 @@ document.addEventListener('DOMContentLoaded', () => {
         `;
       }
 
+      // Обертка для полоски
       const wrapper = document.createElement('div');
       wrapper.className = "relative";
 
       const card = document.createElement('details');
       
-      if (isCurrent) {
-        card.className = "group w-full overflow-hidden bg-blue-600 border border-blue-500 rounded-xl transition-all duration-300 shadow-[0_0_15px_rgba(37,99,235,0.2)]";
+      // Если карточка внутри группы, делаем фон чуть темнее и рамку тоньше
+      if (isInsideGroup) {
+        card.className = `group bg-[#0a0a0a] border border-white/5 rounded-lg transition-all duration-300 open:border-white/10 open:bg-[#0d0d0d] ${isCurrent ? '!bg-blue-600 !border-blue-500' : ''}`;
       } else {
-        card.className = "group w-full bg-[#111111] border border-white/10 rounded-xl transition-all duration-300 open:border-blue-500/50 open:bg-[#151515]";
+        card.className = isCurrent 
+          ? "group w-full overflow-hidden bg-blue-600 border border-blue-500 rounded-xl transition-all duration-300 shadow-[0_0_15px_rgba(37,99,235,0.2)]"
+          : "group w-full bg-[#111111] border border-white/10 rounded-xl transition-all duration-300 open:border-blue-500/50 open:bg-[#151515]";
       }
       
       card.innerHTML = `
@@ -219,7 +236,6 @@ document.addEventListener('DOMContentLoaded', () => {
         </div>
       `;
 
-
       if (isCurrent) {
         const stripe = document.createElement('div');
         stripe.className = "absolute left-0 top-2 bottom-2 w-1.5 bg-white rounded-r-full z-20 transition-all duration-300 pointer-events-none";
@@ -227,8 +243,56 @@ document.addEventListener('DOMContentLoaded', () => {
       }
 
       wrapper.appendChild(card);
-      container.appendChild(wrapper);
-    });
+      return wrapper;
+    };
+
+    // 4. Функция создания "Папки" (группы)
+    const createGroup = (title, items, iconName) => {
+      if (!items.length) return null;
+      
+      const group = document.createElement('details');
+      group.className = "group bg-[#111111] border border-white/10 rounded-xl transition-all duration-300 open:border-blue-500/30";
+      
+      group.innerHTML = `
+        <summary class="flex items-center justify-between p-5 cursor-pointer list-none select-none">
+          <div class="flex items-center gap-3">
+            <div class="w-8 h-8 rounded-lg bg-white/5 flex items-center justify-center">
+              <i data-lucide="${iconName}" class="w-4 h-4 text-slate-400"></i>
+            </div>
+            <h3 class="text-lg font-bold text-white">${title}</h3>
+            <span class="px-2 py-0.5 text-xs font-bold bg-white/5 text-slate-400 rounded-md">${items.length}</span>
+          </div>
+          <div class="w-8 h-8 rounded-full bg-white/5 flex items-center justify-center group-open:rotate-180 transition-transform">
+            <i data-lucide="chevron-down" class="w-4 h-4 text-slate-400"></i>
+          </div>
+        </summary>
+        <div class="px-4 pb-4 pt-2 flex flex-col gap-3">
+          <!-- Сюда будут вставляться карточки -->
+        </div>
+      `;
+      
+      const contentDiv = group.querySelector('div.flex-col');
+      items.forEach(item => {
+        contentDiv.appendChild(createCard(item, true)); // true = стиль "внутри группы"
+      });
+
+      return group;
+    };
+
+    // 5. Собираем всё вместе
+    if (currentVersion) {
+      container.appendChild(createCard(currentVersion));
+    }
+
+    if (inProgressVersion) {
+      container.appendChild(createCard(inProgressVersion));
+    }
+
+    const plannedGroup = createGroup(translations?.roadmap?.groups?.planned || 'Planned', plannedVersions, 'calendar');
+    if (plannedGroup) container.appendChild(plannedGroup);
+
+    const releasedGroup = createGroup(translations?.roadmap?.groups?.released || 'Past versions', releasedVersions, 'archive');
+    if (releasedGroup) container.appendChild(releasedGroup);
 
     lucide.createIcons();
   }

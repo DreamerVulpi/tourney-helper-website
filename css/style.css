@@ -43,6 +43,7 @@ body {
 /* Home, Features, Roadmap */
 main > section {
   min-height: 100vh;
+  min-height: 100dvh; 
   
   padding-top: calc(4rem + 2rem);
   padding-bottom: 2rem;
@@ -54,19 +55,19 @@ main > section {
   justify-content: center; 
 }
 
-/* Contacta + Support ) */
+/* Contacts + Support */
 .snap-group {
   min-height: 100vh;
+  min-height: 100dvh;
   scroll-snap-align: start;
   display: flex;
   flex-direction: column;
-  
   padding-top: calc(4rem + 2rem);
   padding-bottom: 2rem;
-  
   justify-content: center; 
 }
 
+/* Mobile edition */
 @media (max-width: 768px) {
   body {
     scroll-snap-type: none;
@@ -74,9 +75,17 @@ main > section {
   
   main > section,
   .snap-group {
-    min-height: auto;
-    padding-top: 6rem;
-    padding-bottom: 4rem;
-    justify-content: flex-start;
+    min-height: 100vh; 
+    min-height: 100dvh;
+
+    justify-content: flex-start; 
+    
+    padding-top: 8rem; 
+    padding-bottom: 2rem;
+  }
+  
+  #home {
+    justify-content: center;
+    padding-top: 4rem;
   }
 }
