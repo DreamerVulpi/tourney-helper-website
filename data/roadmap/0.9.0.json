@@ -3,16 +3,18 @@
   "status": "planned",
   "date_range": "Q1-Q2 2027",
   "title": {
-    "ru": "Новый инструмент",
-    "en": "New tool"
+    "ru": "Новый инструмент, добавление встроенного функционала для кастомизации тем виджетов",
+    "en": "New tool, adding built-in functionality for customizing"
   },
   "details": {
     "ru": [
         "Новый инструмент \"Запись экрана\";",
+        "Добавление встроенного функционала для кастомизации тем виджетов;",
         "Улучшения использования UI, исправление багов и другое;"
     ],
     "en": [
         "New \"Electronic Queue\" widget;",
+        "Adding built-in functionality for customizing widget themes;",
         "UI improvements, bug fixes, and more;"
     ]
   }

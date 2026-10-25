@@ -116,30 +116,25 @@ document.addEventListener('DOMContentLoaded', () => {
     }
   }
 
-      function renderRoadmap() {
+  function renderRoadmap() {
     const container = document.getElementById('roadmap-list');
     if (!container || !roadmapData.length) return;
 
     container.innerHTML = '';
 
-    // 1. Сортируем все данные по убыванию версии (сначала новые)
     const sortedData = [...roadmapData].sort((a, b) => 
       b.version.localeCompare(a.version, undefined, { numeric: true })
     );
 
-    // 2. Распределяем по категориям
     const currentVersion = sortedData.find(item => item.current === true);
     const inProgressVersion = sortedData.find(item => item.status === 'in-progress');
     
-    // Для запланированных сортируем по возрастанию (сначала ближайшие)
     const plannedVersions = sortedData
       .filter(item => item.status === 'planned')
       .sort((a, b) => a.version.localeCompare(b.version, undefined, { numeric: true }));
       
-    // Для прошлых оставляем сортировку по убыванию (сначала самые свежие)
     const releasedVersions = sortedData.filter(item => item.status === 'released' && item.current !== true);
 
-    // 3. Функция создания обычной карточки (для Актуальной и В процессе)
     const createCard = (item, isInsideGroup = false) => {
       let statusColor = "bg-slate-500";
       let iconName = "calendar-clock";
@@ -191,13 +186,11 @@ document.addEventListener('DOMContentLoaded', () => {
         `;
       }
 
-      // Обертка для полоски
       const wrapper = document.createElement('div');
       wrapper.className = "relative";
 
       const card = document.createElement('details');
       
-      // Если карточка внутри группы, делаем фон чуть темнее и рамку тоньше
       if (isInsideGroup) {
         card.className = `group bg-[#0a0a0a] border border-white/5 rounded-lg transition-all duration-300 open:border-white/10 open:bg-[#0d0d0d] ${isCurrent ? '!bg-blue-600 !border-blue-500' : ''}`;
       } else {
@@ -209,15 +202,18 @@ document.addEventListener('DOMContentLoaded', () => {
       card.innerHTML = `
         <summary class="flex items-center justify-between p-5 pl-6 cursor-pointer list-none select-none gap-4">
           <div class="flex items-center gap-4">
-            <div class="flex flex-col items-start gap-1.5 shrink-0 min-w-[100px]">
-              ${currentBadge}
-              <div class="flex items-center gap-2 px-2.5 py-1 rounded-md border ${
-                isCurrent ? 'bg-black/20 border-white/20' : 'bg-[#1d293d] border-white/5'
-              }">
-                <div class="w-2 h-2 rounded-full ${isCurrent ? 'bg-white' : statusColor}"></div>
-                <span class="text-[10px] font-black uppercase tracking-wider ${isCurrent ? 'text-white' : 'text-slate-300'}">${statusText}</span>
+            ${!isInsideGroup ? `
+              <div class="flex flex-col items-start gap-1.5 shrink-0 min-w-[100px]">
+                ${currentBadge}
+                <div class="flex items-center gap-2 px-2.5 py-1 rounded-md border ${
+                  isCurrent ? 'bg-black/20 border-white/20' : 'bg-[#1d293d] border-white/5'
+                }">
+                  <div class="w-2 h-2 rounded-full ${isCurrent ? 'bg-white' : statusColor}"></div>
+                  <span class="text-[10px] font-black uppercase tracking-wider ${isCurrent ? 'text-white' : 'text-slate-300'}">${statusText}</span>
+                </div>
               </div>
-            </div>
+            ` : ''}
+            
             <div>
               <h3 class="text-lg font-bold text-white">v${item.version} — ${titleStr}</h3>
               <p class="text-xs mt-0.5 ${isCurrent ? 'text-blue-100' : 'text-slate-400'}">${dateStr}</p>
@@ -246,7 +242,6 @@ document.addEventListener('DOMContentLoaded', () => {
       return wrapper;
     };
 
-    // 4. Функция создания "Папки" (группы)
     const createGroup = (title, items, iconName) => {
       if (!items.length) return null;
       
@@ -273,13 +268,12 @@ document.addEventListener('DOMContentLoaded', () => {
       
       const contentDiv = group.querySelector('div.flex-col');
       items.forEach(item => {
-        contentDiv.appendChild(createCard(item, true)); // true = стиль "внутри группы"
+        contentDiv.appendChild(createCard(item, true));
       });
 
       return group;
     };
 
-    // 5. Собираем всё вместе
     if (currentVersion) {
       container.appendChild(createCard(currentVersion));
     }
@@ -387,5 +381,4 @@ document.addEventListener('DOMContentLoaded', () => {
   loadLocale(currentLang);
   loadRoadmapData();
   loadFeaturesData();
-  
 });

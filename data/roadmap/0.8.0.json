@@ -4,7 +4,7 @@
   "date_range": "Q1 2027",
   "title": {
     "ru": "Переработка инструмента \"Рассылка уведомлений\", улучшение инструмента \"База данных игроков\", поддержка новых интеграций",
-    "en": "Redesign of the \"Notification Mailing\" tool, improvements to the \"Player Database\" tool, support for new integrations"
+    "en": "Redesign of the \"Notification mailing\" tool, improvements to the \"Player Database\" tool, support for new integrations"
   },
   "details": {
     "ru": [

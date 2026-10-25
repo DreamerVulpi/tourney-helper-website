@@ -5,8 +5,8 @@
   "current": true,
   "download_url": "https://github.com/DreamerVulpi/tourney-helper/releases/download/v0.4.0/TourneyHelper-v0.4.0-Windows-x64.zip",
   "title": {
-    "ru": "Улучшение системы рассылки уведомлений и улучшение взаимодействия с UI",
-    "en": "Improvements to the notification system and UI interaction"
+    "ru": "Улучшение инструмента \"Рассылка уведомлений\" и улучшение взаимодействия с UI",
+    "en": "Improvements to the \"Notification mailing\" tool and enhanced UI interaction"
   },
   "details": {
     "ru": [
