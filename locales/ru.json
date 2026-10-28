@@ -6,7 +6,11 @@
     "features": "Особенности"
   },
   "features": {
-      "title": "Особенности"
+      "title": "Особенности",
+      "categories": {
+        "tools": "Инструменты",
+        "widgets": "Виджеты"
+      }
   },
   "header": {
     "support": "Поддержать",
@@ -32,6 +36,7 @@
     "status": {
       "released": "Выпущено",
       "in-progress": "В разработке",
+      "testing": "Тестирование",
       "planned": "Запланировано"
     }
   },

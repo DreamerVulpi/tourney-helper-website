@@ -128,6 +128,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
     const currentVersion = sortedData.find(item => item.current === true);
     const inProgressVersion = sortedData.find(item => item.status === 'in-progress');
+    const testingVersion = sortedData.find(item => item.status === 'testing');
     
     const plannedVersions = sortedData
       .filter(item => item.status === 'planned')
@@ -148,6 +149,14 @@ document.addEventListener('DOMContentLoaded', () => {
         statusColor = "bg-blue-500";
         iconName = "timer";
         iconColor = "text-blue-500";
+      } else if (item.status === 'testing') {
+        statusColor = "bg-purple-500";
+        iconName = "flask-conical";
+        iconColor = "text-purple-500";
+      } else if (item.status === 'planned') {
+        statusColor = "bg-slate-500";
+        iconName = "calendar-clock";
+        iconColor = "text-slate-400";
       }
 
       const statusText = translations?.roadmap?.status?.[item.status] || item.status;
@@ -201,24 +210,27 @@ document.addEventListener('DOMContentLoaded', () => {
       
       card.innerHTML = `
         <summary class="flex items-center justify-between p-5 pl-6 cursor-pointer list-none select-none gap-4">
-          <div class="flex items-center gap-4">
-            ${!isInsideGroup ? `
-              <div class="flex flex-col items-start gap-1.5 shrink-0 min-w-[100px]">
-                ${currentBadge}
+          <div class="flex flex-col gap-2">
+            
+            <div class="flex items-center gap-2 flex-wrap">
+              ${currentBadge}
+              
+              ${!isInsideGroup ? `
                 <div class="flex items-center gap-2 px-2.5 py-1 rounded-md border ${
                   isCurrent ? 'bg-black/20 border-white/20' : 'bg-[#1d293d] border-white/5'
                 }">
                   <div class="w-2 h-2 rounded-full ${isCurrent ? 'bg-white' : statusColor}"></div>
                   <span class="text-[10px] font-black uppercase tracking-wider ${isCurrent ? 'text-white' : 'text-slate-300'}">${statusText}</span>
                 </div>
-              </div>
-            ` : ''}
-            
-            <div>
-              <h3 class="text-lg font-bold text-white">v${item.version} — ${titleStr}</h3>
-              <p class="text-xs mt-0.5 ${isCurrent ? 'text-blue-100' : 'text-slate-400'}">${dateStr}</p>
+              ` : ''}
+
+              <span class="text-xs font-medium ${isCurrent ? 'text-blue-100' : 'text-slate-400'}">${dateStr}</span>
             </div>
+
+            <h3 class="text-lg font-bold text-white leading-tight">v${item.version} — ${titleStr}</h3>
+            
           </div>
+          
           <div class="w-8 h-8 shrink-0 rounded-full flex items-center justify-center group-open:rotate-180 transition-transform ${
             isCurrent ? 'bg-white/20 text-white' : 'bg-white/5 text-slate-400'
           }">
@@ -282,6 +294,10 @@ document.addEventListener('DOMContentLoaded', () => {
       container.appendChild(createCard(inProgressVersion));
     }
 
+    if (testingVersion) {
+      container.appendChild(createCard(testingVersion));
+    }
+
     const plannedGroup = createGroup(translations?.roadmap?.groups?.planned || 'Planned', plannedVersions, 'calendar');
     if (plannedGroup) container.appendChild(plannedGroup);
 
@@ -315,19 +331,24 @@ document.addEventListener('DOMContentLoaded', () => {
     }
   }
 
-    function renderFeatures() {
+  function renderFeatures() {
     const container = document.getElementById('features-list');
     if (!container || !featuresData.length) return;
 
     container.innerHTML = '';
+    container.className = "flex flex-col gap-10 w-full";
 
-    featuresData.forEach((item) => {
+    const generalFeatures = featuresData.filter(item => !item.category);
+    const toolFeatures = featuresData.filter(item => item.category === 'tools');
+    const widgetFeatures = featuresData.filter(item => item.category === 'widgets');
+
+    const createFeatureCard = (item) => {
       const titleStr = item.title[currentLang] || item.title['en'];
       const descStr = item.description[currentLang] || item.description['en'];
       const iconName = item.icon || 'box';
 
       const card = document.createElement('div');
-      card.className = "bg-[#111111] border border-white/10 rounded-xl p-5 flex flex-col gap-3 hover:border-blue-500/30 transition-colors";
+      card.className = "bg-[#111111] border border-white/10 rounded-xl p-5 flex flex-col gap-3 hover:border-blue-500/30 transition-colors h-full";
       
       card.innerHTML = `
         <div class="flex items-center gap-3">
@@ -336,14 +357,81 @@ document.addEventListener('DOMContentLoaded', () => {
           </div>
           <h3 class="text-base font-bold text-white leading-tight">${titleStr}</h3>
         </div>
-        
         <div>
           <p class="text-sm text-slate-400 leading-relaxed">${descStr}</p>
         </div>
       `;
+      return card;
+    };
 
-      container.appendChild(card);
-    });
+    // 1. Общие фичи (без категории)
+    if (generalFeatures.length > 0) {
+      const generalGrid = document.createElement('div');
+      generalGrid.className = "grid grid-cols-1 md:grid-cols-2 gap-4 w-full";
+      generalFeatures.forEach(item => {
+        generalGrid.appendChild(createFeatureCard(item));
+      });
+      container.appendChild(generalGrid);
+    }
+
+    // 2. Проверяем количество активных категорий
+    const activeCategoriesCount = (toolFeatures.length > 0 ? 1 : 0) + (widgetFeatures.length > 0 ? 1 : 0);
+
+    if (activeCategoriesCount === 2) {
+      // СЦЕНАРИЙ А: Есть и Инструменты, и Виджеты -> 2 колонки
+      const categoriesGrid = document.createElement('div');
+      categoriesGrid.className = "grid grid-cols-1 md:grid-cols-2 gap-6 w-full";
+
+      // Левая колонка (Инструменты)
+      const toolsCol = document.createElement('div');
+      toolsCol.className = "flex flex-col gap-4";
+      const toolsTitle = document.createElement('h3');
+      toolsTitle.className = "flex items-center gap-2 text-[11px] font-black uppercase tracking-[0.2em] italic text-slate-500 mb-2 px-1";
+      toolsTitle.innerHTML = `<i data-lucide="wrench" class="w-3.5 h-3.5"></i><span>${translations?.features?.categories?.tools || 'Tools'}</span>`;
+      toolsCol.appendChild(toolsTitle);
+      toolFeatures.forEach(item => toolsCol.appendChild(createFeatureCard(item)));
+      categoriesGrid.appendChild(toolsCol);
+
+      // Правая колонка (Виджеты)
+      const widgetsCol = document.createElement('div');
+      widgetsCol.className = "flex flex-col gap-4";
+      const widgetsTitle = document.createElement('h3');
+      widgetsTitle.className = "flex items-center gap-2 text-[11px] font-black uppercase tracking-[0.2em] italic text-slate-500 mb-2 px-1";
+      widgetsTitle.innerHTML = `<i data-lucide="monitor" class="w-3.5 h-3.5"></i><span>${translations?.features?.categories?.widgets || 'Widgets'}</span>`;
+      widgetsCol.appendChild(widgetsTitle);
+      widgetFeatures.forEach(item => widgetsCol.appendChild(createFeatureCard(item)));
+      categoriesGrid.appendChild(widgetsCol);
+
+      container.appendChild(categoriesGrid);
+
+    } else if (activeCategoriesCount === 1) {
+      // СЦЕНАРИЙ Б: Есть только одна категория -> Заголовок на всю ширину + сетка
+      const singleCategoryBlock = document.createElement('div');
+      singleCategoryBlock.className = "w-full flex flex-col gap-4";
+
+      const isTools = toolFeatures.length > 0;
+      const titleText = isTools 
+        ? (translations?.features?.categories?.tools || 'Tools')
+        : (translations?.features?.categories?.widgets || 'Widgets');
+      const titleIcon = isTools ? 'wrench' : 'monitor';
+      const featuresToRender = isTools ? toolFeatures : widgetFeatures;
+
+      // Заголовок
+      const title = document.createElement('h3');
+      title.className = "flex items-center gap-2 text-[11px] font-black uppercase tracking-[0.2em] italic text-slate-500 mb-2 px-1";
+      title.innerHTML = `<i data-lucide="${titleIcon}" class="w-3.5 h-3.5"></i><span>${titleText}</span>`;
+      singleCategoryBlock.appendChild(title);
+
+      // Сетка карточек на всю ширину
+      const grid = document.createElement('div');
+      grid.className = "grid grid-cols-1 md:grid-cols-2 gap-4 w-full";
+      featuresToRender.forEach(item => {
+        grid.appendChild(createFeatureCard(item));
+      });
+      
+      singleCategoryBlock.appendChild(grid);
+      container.appendChild(singleCategoryBlock);
+    }
 
     lucide.createIcons();
   }

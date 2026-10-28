@@ -1,6 +1,6 @@
 {
   "version": "0.5.0",
-  "status": "in-progress",
+  "status": "testing",
   "date_range": "Q4 2026",
   "title": {
     "ru": "Новый виджет, улучшение OAuth авторизации, система профилей",

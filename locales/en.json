@@ -6,7 +6,11 @@
     "features": "Features"
   },
   "features": {
-      "title": "Features"
+      "title": "Features",
+      "categories": {
+        "tools": "Tools",
+        "widgets": "Widgets"
+      }
   },
   "header": {
     "support": "Support",
@@ -32,6 +36,7 @@
     "status": {
       "released": "Released",
       "in-progress": "In Progress",
+      "testing": "Testing",
       "planned": "Planned"
     }
   },

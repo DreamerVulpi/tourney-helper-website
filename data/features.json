@@ -24,12 +24,26 @@
         }
     },
     {
+        "id": "notifications",
+        "icon": "send",
+        "title": {
+            "ru": "Рассылка уведомлений",
+            "en": "Notifications Mailing"
+        },
+        "category": "tools",
+        "description": {
+        "ru": "Система, используя данные с выбранной турнирной платформой и методом, рассылает сообщения-приглашения участникам турнира",
+        "en": "The system uses data from the selected tournament platform and method to send invitation messages to tournament participants"
+        }
+    },
+    {
         "id": "database",
         "icon": "database",
         "title": {
             "ru": "База данных игроков",
             "en": "Player database"
         },
+        "category": "tools",
         "description": {
             "ru": "Хранилище игроков с их данными. Данные можно добавить самостоятельно или импортировать файлами. Также присутствует автоматическое сохранение/актуализация данных от инструмента \"Рассылка уведомлений\"",
             "en": "A database of players and their information. You can add data manually or import it via files. Data is also automatically saved and updated by the \"Notification Mailing\" tool"
@@ -45,18 +59,6 @@
         "description": {
             "ru": "Имеется возможность вести учет игроков по очкам лиги, а также бан-лист с подробным описанием нарушителей",
             "en": "You can keep track of players based on their league points, as well as maintain a ban list with detailed descriptions of each offenders"
-        }
-    },
-    {
-        "id": "notifications",
-        "icon": "send",
-        "title": {
-            "ru": "Рассылка уведомлений",
-            "en": "Notifications Mailing"
-        },
-        "description": {
-        "ru": "Система, используя данные с выбранной турнирной платформой и методом, рассылает сообщения-приглашения участникам турнира.",
-        "en": "The system uses data from the selected tournament platform and method to send invitation messages to tournament participants."
         }
     }
 ]
