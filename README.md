@@ -19,4 +19,4 @@
 
 # Tourney Helper Website
 
-The official website presenting the **Tourney Helper** project — a versatile suite of tools designed to simplify tournament organization.
+The official [website](https://dreamervulpi.github.io/tourney-helper-website/) presenting the [**Tourney Helper**](https://github.com/DreamerVulpi/tourney-helper) project — a versatile suite of tools designed to simplify tournament organization.

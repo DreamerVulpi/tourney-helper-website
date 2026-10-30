@@ -19,4 +19,4 @@
 
 # Tourney Helper Сайт
 
-Официальный сайт-презентация проекта **Tourney Helper** — универсального набора инструментов для упрощения организации турниров.
+Официальный [сайт-презентация](https://dreamervulpi.github.io/tourney-helper-website/) проекта [**Tourney Helper**](https://github.com/DreamerVulpi/tourney-helper) — универсального набора инструментов для упрощения организации турниров.
