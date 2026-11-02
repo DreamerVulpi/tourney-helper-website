@@ -2,7 +2,6 @@
   "version": "0.4.0",
   "status": "released",
   "date": "2026-08-29",
-  "current": true,
   "download_url": "https://github.com/DreamerVulpi/tourney-helper/releases/download/v0.4.0/TourneyHelper-v0.4.0-Windows-x64.zip",
   "title": {
     "ru": "Улучшение инструмента \"Рассылка уведомлений\" и улучшение взаимодействия с UI",

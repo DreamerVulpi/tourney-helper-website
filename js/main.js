@@ -199,6 +199,7 @@ document.addEventListener('DOMContentLoaded', () => {
       wrapper.className = "relative";
 
       const card = document.createElement('details');
+      card.id = `v${item.version}`;
       
       if (isInsideGroup) {
         card.className = `group bg-[#0a0a0a] border border-white/5 rounded-lg transition-all duration-300 open:border-white/10 open:bg-[#0d0d0d] ${isCurrent ? '!bg-blue-600 !border-blue-500' : ''}`;
@@ -227,7 +228,16 @@ document.addEventListener('DOMContentLoaded', () => {
               <span class="text-xs font-medium ${isCurrent ? 'text-blue-100' : 'text-slate-400'}">${dateStr}</span>
             </div>
 
-            <h3 class="text-lg font-bold text-white leading-tight">v${item.version} — ${titleStr}</h3>
+            <h3 class="text-lg font-bold text-white leading-tight flex items-center gap-2">
+              v${item.version} — ${titleStr}
+              <button 
+                onclick="navigator.clipboard.writeText('${window.location.origin}${window.location.pathname}#v${item.version}'); alert('${translations?.roadmap?.linkCopied || 'Ссылка скопирована!'}'); event.preventDefault();" 
+                class="${isCurrent ? 'text-blue-200 hover:text-white hover:bg-white/20' : 'text-slate-500 hover:text-blue-500 hover:bg-white/5'} transition-colors p-1 rounded-md"
+                title="${translations?.roadmap?.share || 'Поделиться ссылкой'}"
+              >
+                <i data-lucide="link" class="w-4 h-4"></i>
+              </button>
+            </h3>
             
           </div>
           
@@ -303,6 +313,47 @@ document.addEventListener('DOMContentLoaded', () => {
 
     const releasedGroup = createGroup(translations?.roadmap?.groups?.released || 'Past versions', releasedVersions, 'archive');
     if (releasedGroup) container.appendChild(releasedGroup);
+
+        // ==========================================
+    // ЛОГИКА ОТКРЫТИЯ ПО ССЫЛКЕ (DEEP LINKING)
+    // ==========================================
+    if (window.location.hash) {
+      const hashId = window.location.hash.substring(1); // Убираем '#'
+      const targetCard = document.getElementById(hashId);
+      
+      if (targetCard) {
+        // 1. Открываем саму карточку
+        targetCard.open = true; 
+        
+        // 2. Ищем родительскую группу (если она есть) и тоже открываем её
+        let parent = targetCard.parentElement;
+        while (parent) {
+          if (parent.tagName === 'DETAILS') {
+            parent.open = true;
+          }
+          parent = parent.parentElement;
+        }
+
+        // 3. Скроллим с учетом шапки
+        setTimeout(() => {
+          const headerOffset = 80; 
+          const elementPosition = targetCard.getBoundingClientRect().top;
+          const offsetPosition = elementPosition + window.scrollY - headerOffset;
+          
+          window.scrollTo({
+            top: offsetPosition,
+            behavior: "smooth"
+          });
+
+          // Визуальная подсветка
+          targetCard.classList.add('ring-2', 'ring-white', 'ring-offset-2', 'ring-offset-[#050505]');
+          
+          setTimeout(() => {
+            targetCard.classList.remove('ring-2', 'ring-white', 'ring-offset-2', 'ring-offset-[#050505]');
+          }, 2500);
+        }, 100);
+      }
+    }
 
     lucide.createIcons();
   }

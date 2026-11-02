@@ -38,7 +38,9 @@
       "in-progress": "In Progress",
       "testing": "Testing",
       "planned": "Planned"
-    }
+    },
+    "share": "Share link",
+    "linkCopied": "Link copied!"
   },
   "contacts": {
     "title": "Contacts",

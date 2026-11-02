@@ -1,23 +1,29 @@
 {
   "version": "0.5.0",
-  "status": "testing",
-  "date_range": "Q4 2026",
+  "status": "released",
+  "date_range": "2026-02-11",
+  "current": true,
+  "download_url": "https://github.com/DreamerVulpi/tourney-helper/releases/download/v0.5.0/TourneyHelper-v0.5.0-Windows-x64.zip",
   "title": {
     "ru": "Новый виджет, улучшение OAuth авторизации, система профилей",
     "en": "New widget, OAuth authorization improvements, profile system"
   },
   "details": {
     "ru": [
-        "Новый виджет \"Турнирная сетка\";",
-        "Переработанная система \"OAuth\" авторизации;",
-        "Система профилей программы с возможностью импортировать и экспортировать;",
-        "Улучшения использования UI, исправление багов и другое;"
+        "Добавлен новый виджет \"Виджет сетки\". Имеются разные параметры для настройки (масштабирование, автообновление данных, чистый фон, скрытие этапов, тип сетки), а также возможность поставить свою тему;",
+        "Добавлена система интеграций и профилей. В 1 профиле содержатся все настройки виджетов и инструментов (в том числе и базы данных), а также 5 слотов каждой доступной интеграции. Имеется возможность создавать/удалять/дублировать/импортировать/экспортировать профили;",
+        "Доработана система авторизации OAuth. Теперь имеется локализация, оформление и автоматическое закрытие вкладки;",
+        "Теперь для запуска инструмента/виджета необходимо выбрать авторизованный OAuth клиент сверху из выпадающего списка. Местоположение кнопок одинаково для всех.",
+        "Исправлена ошибка с preview матчами при получении данных у интеграции startgg;",
+        "Улучшено использование скрытия/раскрытия левой панели;"
     ],
     "en": [
-        "New “Tournament Bracket” widget;",
-        "Revamped “OAuth” authentication system;",
-        "Program profile system with import and export capabilities;",
-        "UI improvements, bug fixes, and more;"
+        "A new \"Widget bracket\" has been added. It offers various customization options (zoom, auto-refresh, solid background, hide stages, grid type), as well as the ability to apply your own theme;",
+        "An integration and profile system has been added. Each profile contains all widget and tool settings (including databases), as well as 5 slots for each available integration. You can create, delete, duplicate, import, and export profiles;",
+        "The OAuth authorization system has been refined. It now includes localization, styling, and automatic tab closing;",
+        "To launch a tool or widget, you must now select an authorized OAuth client from the drop-down list at the top. The button layout is the same for all tools;",
+        "Fixed an issue with match previews when retrieving data from the startgg integration;",
+        "Improved the functionality for hiding and showing the left panel;"
     ]
   }
 }

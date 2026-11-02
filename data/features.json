@@ -60,5 +60,30 @@
             "ru": "Имеется возможность вести учет игроков по очкам лиги, а также бан-лист с подробным описанием нарушителей",
             "en": "You can keep track of players based on their league points, as well as maintain a ban list with detailed descriptions of each offenders"
         }
+    },
+    {
+        "id": "widgets",
+        "icon": "layout-grid-circles",
+        "title": {
+            "ru": "Виджеты",
+            "en": "Widgets"
+        },
+        "description": {
+            "ru": "Виджеты позволяют удобно визуализировать турнирные сетки, счета игроков и многое другое",
+            "en": "Widgets make it easy to display tournament brackets, player scores, and much more"
+        }
+    },
+    {
+        "id": "widgetBracket",
+        "icon": "git-fork",
+        "title": {
+            "ru": "Виджет сетки",
+            "en": "Widget bracket"
+        },
+        "category": "widgets",
+        "description": {
+            "ru": "Виджет турнирной сетки предоставляет возможность отображать сетку по своему дизайну. Среди параметров можно отключить задний фон, отображение этапов турнира и автообновление данных.",
+            "en": "The tournament bracket widget allows you to customize the bracket's appearance. Among the settings, you can disable the background, the display of tournament rounds, and automatic data refresh."
+        }
     }
 ]
