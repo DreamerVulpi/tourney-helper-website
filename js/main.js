@@ -314,18 +314,16 @@ document.addEventListener('DOMContentLoaded', () => {
     const releasedGroup = createGroup(translations?.roadmap?.groups?.released || 'Past versions', releasedVersions, 'archive');
     if (releasedGroup) container.appendChild(releasedGroup);
 
-        // ==========================================
-    // ЛОГИКА ОТКРЫТИЯ ПО ССЫЛКЕ (DEEP LINKING)
+    // ==========================================
+    // DEEP LINKING
     // ==========================================
     if (window.location.hash) {
-      const hashId = window.location.hash.substring(1); // Убираем '#'
+      const hashId = window.location.hash.substring(1);
       const targetCard = document.getElementById(hashId);
       
       if (targetCard) {
-        // 1. Открываем саму карточку
         targetCard.open = true; 
         
-        // 2. Ищем родительскую группу (если она есть) и тоже открываем её
         let parent = targetCard.parentElement;
         while (parent) {
           if (parent.tagName === 'DETAILS') {
@@ -334,7 +332,6 @@ document.addEventListener('DOMContentLoaded', () => {
           parent = parent.parentElement;
         }
 
-        // 3. Скроллим с учетом шапки
         setTimeout(() => {
           const headerOffset = 80; 
           const elementPosition = targetCard.getBoundingClientRect().top;
@@ -345,12 +342,6 @@ document.addEventListener('DOMContentLoaded', () => {
             behavior: "smooth"
           });
 
-          // Визуальная подсветка
-          targetCard.classList.add('ring-2', 'ring-white', 'ring-offset-2', 'ring-offset-[#050505]');
-          
-          setTimeout(() => {
-            targetCard.classList.remove('ring-2', 'ring-white', 'ring-offset-2', 'ring-offset-[#050505]');
-          }, 2500);
         }, 100);
       }
     }
@@ -415,7 +406,6 @@ document.addEventListener('DOMContentLoaded', () => {
       return card;
     };
 
-    // 1. Общие фичи (без категории)
     if (generalFeatures.length > 0) {
       const generalGrid = document.createElement('div');
       generalGrid.className = "grid grid-cols-1 md:grid-cols-2 gap-4 w-full";
@@ -425,15 +415,13 @@ document.addEventListener('DOMContentLoaded', () => {
       container.appendChild(generalGrid);
     }
 
-    // 2. Проверяем количество активных категорий
+
     const activeCategoriesCount = (toolFeatures.length > 0 ? 1 : 0) + (widgetFeatures.length > 0 ? 1 : 0);
 
     if (activeCategoriesCount === 2) {
-      // СЦЕНАРИЙ А: Есть и Инструменты, и Виджеты -> 2 колонки
       const categoriesGrid = document.createElement('div');
       categoriesGrid.className = "grid grid-cols-1 md:grid-cols-2 gap-6 w-full";
 
-      // Левая колонка (Инструменты)
       const toolsCol = document.createElement('div');
       toolsCol.className = "flex flex-col gap-4";
       const toolsTitle = document.createElement('h3');
@@ -443,7 +431,6 @@ document.addEventListener('DOMContentLoaded', () => {
       toolFeatures.forEach(item => toolsCol.appendChild(createFeatureCard(item)));
       categoriesGrid.appendChild(toolsCol);
 
-      // Правая колонка (Виджеты)
       const widgetsCol = document.createElement('div');
       widgetsCol.className = "flex flex-col gap-4";
       const widgetsTitle = document.createElement('h3');
@@ -456,7 +443,7 @@ document.addEventListener('DOMContentLoaded', () => {
       container.appendChild(categoriesGrid);
 
     } else if (activeCategoriesCount === 1) {
-      // СЦЕНАРИЙ Б: Есть только одна категория -> Заголовок на всю ширину + сетка
+
       const singleCategoryBlock = document.createElement('div');
       singleCategoryBlock.className = "w-full flex flex-col gap-4";
 
@@ -467,13 +454,12 @@ document.addEventListener('DOMContentLoaded', () => {
       const titleIcon = isTools ? 'wrench' : 'monitor';
       const featuresToRender = isTools ? toolFeatures : widgetFeatures;
 
-      // Заголовок
+
       const title = document.createElement('h3');
       title.className = "flex items-center gap-2 text-[11px] font-black uppercase tracking-[0.2em] italic text-slate-500 mb-2 px-1";
       title.innerHTML = `<i data-lucide="${titleIcon}" class="w-3.5 h-3.5"></i><span>${titleText}</span>`;
       singleCategoryBlock.appendChild(title);
 
-      // Сетка карточек на всю ширину
       const grid = document.createElement('div');
       grid.className = "grid grid-cols-1 md:grid-cols-2 gap-4 w-full";
       featuresToRender.forEach(item => {
