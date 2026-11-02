@@ -1,6 +1,6 @@
 {
   "version": "0.6.0",
-  "status": "planned",
+  "status": "in-progress",
   "date_range": "Q4 2026",
   "title": {
     "ru": "Новый виджет",
@@ -9,10 +9,12 @@
   "details": {
     "ru": [
         "Новый виджет \"Счет матча\";",
+        "Поддержка интеграции инструмента \"База данных игроков\" с новым виджетом",
         "Улучшения использования UI, исправление багов и другое;"
     ],
     "en": [
         "New \"Match Score\" widget;",
+        "Support for integrating the \"Player Database\" tool with the new widget",
         "UI improvements, bug fixes, and more;"
     ]
   }
