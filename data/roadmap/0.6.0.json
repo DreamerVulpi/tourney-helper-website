@@ -9,12 +9,12 @@
   "details": {
     "ru": [
         "Новый виджет \"Счет матча\";",
-        "Поддержка интеграции инструмента \"База данных игроков\" с новым виджетом",
+        "Поддержка интеграции инструмента \"База данных игроков\" с новым виджетом;",
         "Улучшения использования UI, исправление багов и другое;"
     ],
     "en": [
         "New \"Match Score\" widget;",
-        "Support for integrating the \"Player Database\" tool with the new widget",
+        "Support for integrating the \"Player Database\" tool with the new widget;",
         "UI improvements, bug fixes, and more;"
     ]
   }
