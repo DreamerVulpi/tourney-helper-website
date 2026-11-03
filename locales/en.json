@@ -52,7 +52,8 @@
     "reportBug": "Suggest an idea / Report a bug",
     "telegram": "Telegram news Channel",
     "donatepay": "DonatePay",
-    "boosty": "Boosty"
+    "boosty": "Boosty",
+    "redirecting": "Redirecting..."
   },
   "footer": {
     "note": "Distributed under the MIT License"

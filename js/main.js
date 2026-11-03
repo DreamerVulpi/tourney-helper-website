@@ -501,6 +501,64 @@ document.addEventListener('DOMContentLoaded', () => {
     });
   }
 
+    // ================= 4.5 MODAL: DonatePay =================
+  const donateBtn = document.getElementById('btn-donatepay');
+  const donateModal = document.getElementById('donatepay-modal');
+  const donateContent = document.getElementById('donatepay-content');
+  const closeDonateBtn = document.getElementById('close-donatepay');
+
+  if (donateBtn && donateModal) {
+    donateBtn.addEventListener('click', (e) => {
+      e.preventDefault();
+      
+      donateModal.classList.remove('hidden');
+      setTimeout(() => {
+        donateModal.classList.remove('opacity-0');
+        donateContent.classList.remove('scale-95');
+      }, 10);
+
+      const baseUrl = currentLang === 'ru' 
+        ? "https://new.donatepay.ru/donate/dreamervulpi" 
+        : "https://new.donatepay.ru/en/donate/dreamervulpi";
+      const params = "?name=SupportTourneyHelper&amount=100&currency=EUR";
+      const finalUrl = baseUrl + params;
+
+      setTimeout(() => {
+        window.open(finalUrl, '_blank');
+        
+        // 4. Плавно закрываем модалку
+        setTimeout(() => {
+          donateModal.classList.add('opacity-0');
+          donateContent.classList.add('scale-95');
+          setTimeout(() => {
+            donateModal.classList.add('hidden');
+          }, 300);
+        }, 500);
+      }, 800);
+    });
+
+    const closeModal = () => {
+      donateModal.classList.add('opacity-0');
+      donateContent.classList.add('scale-95');
+      setTimeout(() => {
+        donateModal.classList.add('hidden');
+      }, 300);
+    };
+
+    if (closeDonateBtn) {
+      closeDonateBtn.addEventListener('click', closeModal);
+    }
+
+    donateModal.addEventListener('click', (e) => {
+      if (e.target === donateModal) closeModal();
+    });
+
+    document.addEventListener('keydown', (e) => {
+      if (e.key === 'Escape' && !donateModal.classList.contains('hidden')) {
+        closeModal();
+      }
+    });
+  }
 
   // ================= 5. INITIALIZATION =================
   loadLocale(currentLang);
