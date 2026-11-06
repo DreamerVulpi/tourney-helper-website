@@ -388,11 +388,19 @@ document.addEventListener('DOMContentLoaded', () => {
       const titleStr = item.title[currentLang] || item.title['en'];
       const descStr = item.description[currentLang] || item.description['en'];
       const iconName = item.icon || 'box';
+      const imageStr = item.image || '';
 
       const card = document.createElement('div');
-      card.className = "bg-[#111111] border border-white/10 rounded-xl p-5 flex flex-col gap-3 hover:border-blue-500/30 transition-colors h-full";
-      
+      card.className = "bg-[#111111] border border-white/10 rounded-xl p-5 flex flex-col gap-3 hover:border-blue-500/30 transition-colors";
+
+      const mediaHtml = imageStr
+        ? `<div class="w-full aspect-video rounded-lg bg-[#1d293d] overflow-hidden">
+             <img src="${imageStr}" alt="${titleStr}" loading="lazy" role="button" tabindex="0" class="feature-image w-full h-full object-cover object-top">
+           </div>`
+        : '';
+
       card.innerHTML = `
+        ${mediaHtml}
         <div class="flex items-center gap-3">
           <div class="w-8 h-8 rounded-lg bg-blue-600/10 border border-blue-600/20 flex items-center justify-center shrink-0">
             <i data-lucide="${iconName}" class="w-4 h-4 text-blue-500"></i>
@@ -559,6 +567,67 @@ document.addEventListener('DOMContentLoaded', () => {
       }
     });
   }
+
+  // ================= 4.6 LIGHTBOX: Feature screenshots =================
+  const imageLightbox = document.createElement('div');
+  imageLightbox.className = 'image-lightbox';
+  imageLightbox.setAttribute('role', 'dialog');
+  imageLightbox.setAttribute('aria-modal', 'true');
+  imageLightbox.setAttribute('aria-label', 'Просмотр скриншота');
+  imageLightbox.innerHTML = `
+    <button type="button" class="image-lightbox-close" aria-label="Закрыть">
+      <i data-lucide="x" class="w-6 h-6"></i>
+    </button>
+    <img src="" alt="">
+  `;
+  document.body.appendChild(imageLightbox);
+
+  const imageLightboxImg = imageLightbox.querySelector('img');
+  const imageLightboxClose = imageLightbox.querySelector('.image-lightbox-close');
+  let imageLightboxTrigger = null;
+
+  const openImageLightbox = (trigger) => {
+    imageLightboxImg.src = trigger.currentSrc || trigger.src;
+    imageLightboxImg.alt = trigger.alt || '';
+    imageLightboxTrigger = trigger;
+    imageLightbox.classList.add('is-open');
+    document.body.style.overflow = 'hidden';
+    imageLightboxClose.focus();
+    lucide.createIcons();
+  };
+
+  const closeImageLightbox = () => {
+    imageLightbox.classList.remove('is-open');
+    document.body.style.overflow = '';
+    if (imageLightboxTrigger) {
+      imageLightboxTrigger.focus();
+      imageLightboxTrigger = null;
+    }
+  };
+
+  document.addEventListener('click', (e) => {
+    const image = e.target.closest('img.feature-image');
+    if (image) {
+      openImageLightbox(image);
+      return;
+    }
+    if (e.target === imageLightbox) closeImageLightbox();
+  });
+
+  imageLightboxClose.addEventListener('click', closeImageLightbox);
+
+  document.addEventListener('keydown', (e) => {
+    if (e.key === 'Escape' && imageLightbox.classList.contains('is-open')) {
+      closeImageLightbox();
+      return;
+    }
+    if ((e.key === 'Enter' || e.key === ' ') && e.target.matches('img.feature-image')) {
+      e.preventDefault();
+      openImageLightbox(e.target);
+    }
+  });
+
+  lucide.createIcons();
 
   // ================= 5. INITIALIZATION =================
   loadLocale(currentLang);

@@ -154,3 +154,84 @@ main > section {
 #donatepay-content {
   max-width: 840px;
 }
+/* ================= FEATURE IMAGE LIGHTBOX ================= */
+.feature-image {
+  cursor: zoom-in;
+  transition: transform 0.35s ease;
+}
+
+.feature-image:hover {
+  transform: scale(1.03);
+}
+
+.feature-image:focus-visible {
+  outline: 2px solid #3b82f6;
+  outline-offset: 2px;
+}
+
+.image-lightbox {
+  position: fixed;
+  inset: 0;
+  z-index: 120;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 2rem;
+  background-color: rgba(0, 0, 0, 0.88);
+  backdrop-filter: blur(6px);
+  opacity: 0;
+  visibility: hidden;
+  pointer-events: none;
+  transition: opacity 0.25s ease, visibility 0.25s ease;
+}
+
+.image-lightbox.is-open {
+  opacity: 1;
+  visibility: visible;
+  pointer-events: auto;
+}
+
+.image-lightbox img {
+  max-width: min(96vw, 1800px);
+  max-height: 90vh;
+  width: auto;
+  height: auto;
+  object-fit: contain;
+  border-radius: 0.75rem;
+  border: 1px solid rgba(255, 255, 255, 0.12);
+  box-shadow: 0 30px 90px rgba(0, 0, 0, 0.65);
+  transform: scale(0.96);
+  transition: transform 0.25s ease;
+}
+
+.image-lightbox.is-open img {
+  transform: scale(1);
+}
+
+.image-lightbox-close {
+  position: absolute;
+  top: 1rem;
+  right: 1rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 2.75rem;
+  height: 2.75rem;
+  color: #cbd5e1;
+  background-color: rgba(17, 17, 17, 0.85);
+  border: 1px solid rgba(255, 255, 255, 0.12);
+  border-radius: 0.75rem;
+  cursor: pointer;
+  transition: color 0.2s ease, background-color 0.2s ease;
+}
+
+.image-lightbox-close:hover {
+  color: #fff;
+  background-color: #212c3d;
+}
+
+@media (max-width: 768px) {
+  .image-lightbox {
+    padding: 1rem;
+  }
+}

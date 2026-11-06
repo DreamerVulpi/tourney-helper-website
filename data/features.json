@@ -26,6 +26,7 @@
     {
         "id": "notifications",
         "icon": "send",
+        "image": "data/img/sending-notifications.png",
         "title": {
             "ru": "Рассылка уведомлений",
             "en": "Notifications Mailing"
@@ -39,6 +40,7 @@
     {
         "id": "database",
         "icon": "database",
+        "image": "data/img/player-database.png",
         "title": {
             "ru": "База данных игроков",
             "en": "Player database"
@@ -76,6 +78,7 @@
     {
         "id": "widgetBracket",
         "icon": "git-fork",
+        "image": "data/img/bracket-widget.png",
         "title": {
             "ru": "Виджет сетки",
             "en": "Widget bracket"

@@ -4,6 +4,7 @@ Thumbs.db
 .vscode/
 .idea/
 *.swp
+*.zip
 
 node_modules/
 npm-debug.log*
