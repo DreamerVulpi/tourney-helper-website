@@ -389,13 +389,34 @@ document.addEventListener('DOMContentLoaded', () => {
       const descStr = item.description[currentLang] || item.description['en'];
       const iconName = item.icon || 'box';
       const imageStr = item.image || '';
+      const isContain = item.imageFit === 'contain';
+      const mediaClass = isContain ? 'w-full' : 'w-full aspect-video';
+      const imageClass = isContain ? 'h-auto object-contain' : 'h-full object-cover object-top';
+      const imageWrapStyle = isContain
+        ? ' style="background: radial-gradient(circle at 50% 50%, #151d2b 0%, #0b0f17 100%);"'
+        : '';
 
       const card = document.createElement('div');
       card.className = "bg-[#111111] border border-white/10 rounded-xl p-5 flex flex-col gap-3 hover:border-blue-500/30 transition-colors";
 
       const mediaHtml = imageStr
-        ? `<div class="w-full aspect-video rounded-lg bg-[#1d293d] overflow-hidden">
-             <img src="${imageStr}" alt="${titleStr}" loading="lazy" role="button" tabindex="0" class="feature-image w-full h-full object-cover object-top">
+        ? `<div class="${mediaClass} rounded-lg bg-[#1d293d] overflow-hidden"${imageWrapStyle}>
+             <img src="${imageStr}" alt="${titleStr}" loading="lazy" role="button" tabindex="0" class="feature-image w-full ${imageClass}">
+           </div>`
+        : '';
+
+      const supportedIntegrations = Array.isArray(item.supportedIntegrations) ? item.supportedIntegrations : [];
+      const supportedTitle = translations?.features?.supportedIntegrations || 'Supported integrations';
+      const integrationsHtml = supportedIntegrations.length
+        ? `<div class="mt-1">
+             <p class="text-[10px] font-black uppercase tracking-[0.18em] italic text-slate-500 mb-2">${supportedTitle}</p>
+             <div class="flex items-center gap-2 overflow-x-auto pb-1">
+               ${supportedIntegrations.map(integration => `
+                 <a href="${integration.url}" target="_blank" rel="noopener noreferrer" title="${integration.name}" aria-label="${integration.name}" class="shrink-0 w-11 h-11 rounded-xl bg-white/5 border border-white/10 flex items-center justify-center hover:border-blue-500/50 hover:bg-white/10 transition-colors">
+                   <img src="${integration.icon}" alt="${integration.name}" loading="lazy" class="w-6 h-6 object-contain">
+                 </a>
+               `).join('')}
+             </div>
            </div>`
         : '';
 
@@ -410,6 +431,7 @@ document.addEventListener('DOMContentLoaded', () => {
         <div>
           <p class="text-sm text-slate-400 leading-relaxed">${descStr}</p>
         </div>
+        ${integrationsHtml}
       `;
       return card;
     };

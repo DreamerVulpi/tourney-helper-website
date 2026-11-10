@@ -7,6 +7,7 @@
   },
   "features": {
       "title": "Features",
+      "supportedIntegrations": "Supported integrations",
       "categories": {
         "tools": "Tools",
         "widgets": "Widgets"

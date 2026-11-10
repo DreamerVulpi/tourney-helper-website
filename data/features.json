@@ -7,8 +7,8 @@
             "en": "Self-hosted application"
         },
         "description": {
-            "ru": "Весь функционал работает на вашем устройстве локально без посредников. Единственная связь извне - это поддерживаемые сторонние интеграции. Работа приложения практически полностью под вашим контролем",
-            "en": "All features run locally on your device without any intermediaries. The only external connection is through supported third-party integrations. You have almost complete control over how the app works"
+            "ru": "Работа приложения сосредоточена на локальном устройстве полностью под вашим контролем. Исключением является лишь связь с интеграциями",
+            "en": "The application runs on your local device and stays fully under your control. The only exception is communication with integrations"
         }
     },
     {
@@ -19,9 +19,21 @@
             "en": "Support for Third-Party Integrations"
         },
         "description": {
-            "ru": "Некоторые инструменты/виджеты имеют возможность использовать данные с разных сервисов. На текущий момент имеется поддержка \"startgg\" и \"Discord\"",
-            "en": "Some tools/widgets can use data from different services. Currently, support is available for \"startgg\" and \"Discord\""
-        }
+            "ru": "Некоторые инструменты/виджеты используют данные с разных сервисов.",
+            "en": "Some tools/widgets use data from different services."
+        },
+        "supportedIntegrations": [
+            {
+                "name": "Start.gg",
+                "url": "https://www.start.gg",
+                "icon": "data/img/integrations/startgg.svg"
+            },
+            {
+                "name": "Discord",
+                "url": "https://discord.com",
+                "icon": "data/img/integrations/discord.svg"
+            }
+        ]
     },
     {
         "id": "notifications",
@@ -33,8 +45,8 @@
         },
         "category": "tools",
         "description": {
-        "ru": "Система, используя данные с выбранной турнирной платформой и методом, рассылает сообщения-приглашения участникам турнира",
-        "en": "The system uses data from the selected tournament platform and method to send invitation messages to tournament participants"
+            "ru": "Система, используя данные с выбранной турнирной платформой и методом, рассылает сообщения-приглашения участникам турнира",
+            "en": "The system uses data from the selected tournament platform and method to send invitation messages to tournament participants"
         }
     },
     {
@@ -71,8 +83,8 @@
             "en": "Widgets"
         },
         "description": {
-            "ru": "Виджеты позволяют удобно визуализировать турнирные сетки, счета игроков и многое другое",
-            "en": "Widgets make it easy to display tournament brackets, player scores, and much more"
+            "ru": "Визуализация турнирных сеток и счета игроков со встроенным глубоким инструментарием и возможностью менять под свой дизайн",
+            "en": "Visualization of tournament brackets and player scores with deep built-in tools and the ability to customize the design"
         }
     },
     {
@@ -81,12 +93,27 @@
         "image": "data/img/bracket-widget.png",
         "title": {
             "ru": "Виджет сетки",
-            "en": "Widget bracket"
+            "en": "Bracket widget"
         },
         "category": "widgets",
         "description": {
-            "ru": "Виджет турнирной сетки предоставляет возможность отображать сетку по своему дизайну. Среди параметров можно отключить задний фон, отображение этапов турнира и автообновление данных.",
-            "en": "The tournament bracket widget allows you to customize the bracket's appearance. Among the settings, you can disable the background, the display of tournament rounds, and automatic data refresh."
+            "ru": "Виджет турнирной сетки предоставляет возможность отображать сетку из разных интеграций по своему дизайну. Среди параметров присутствует возможность отключить задний фон, менять режим отображения турнирных этапов сетки или тип (виннера/лузера), масштабирование, перетаскивание, поиск и показ пройденного пути у игрока в рамках текущей сетки, кнопки для перехода на следующую или прошлую сетку если используемая интеграция такую опцию поддерживает",
+            "en": "The tournament bracket widget allows you to display brackets from different integrations in your own design. Settings include disabling the background, changing how tournament stages are displayed or the bracket type (winners/losers), scaling, dragging, search and showing a player's path within the current bracket, and buttons to navigate to the next or previous bracket if the integration supports it"
+        }
+    },
+    {
+        "id": "widgetScoreboard",
+        "icon": "swords",
+        "image": "data/img/scoreboard-widget.png",
+        "imageFit": "contain",
+        "title": {
+            "ru": "Виджет счетов",
+            "en": "Scoreboard widget"
+        },
+        "category": "widgets",
+        "description": {
+            "ru": "Виджет счетов представляет собой отображение игроков/команд с игровыми очками. Поддерживается настройка плашек, шрифтов, форматов матча, масштаб, отступы, отметка ресета, логотипы команд и флагов, а также динамическая верстка текста согласно размерам плашек",
+            "en": "The scoreboard widget displays players/teams with their game points. It supports customization of plates, fonts, match formats, scale, spacing, reset marks, team logos and flags, as well as dynamic text layout according to plate sizes"
         }
     }
 ]

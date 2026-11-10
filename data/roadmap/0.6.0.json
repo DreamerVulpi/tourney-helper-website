@@ -1,19 +1,35 @@
 {
   "version": "0.6.0",
-  "status": "in-progress",
-  "date_range": "Q4 2026",
+  "status": "testing",
+  "date_range": "2026-11",
   "title": {
-    "ru": "Новый виджет",
-    "en": "New widget"
+    "ru": "Новый виджет, улучшение функционала виджета сетки, улучшение ПО",
+    "en": "New widget, improvements to the bracket widget's functionality, software improvements"
   },
   "details": {
     "ru": [
-        "Новый виджет \"Счет матча\";",
-        "Улучшения использования UI, исправление багов и другое;"
+       "Добавлен новый виджет \"Виджет очков\". Имеются разные параметры для настройки (масштабирование, изменение длин плашек и отступов между ними, указание название команд и логотипов, флагов, ресетов, шрифты и их размеры), автоматическая верстка текста под размер плашки, а также возможность поставить свою тему;",
+       "Добавлен новый функционал для \"виджета сетки\": кнопки приближения, поисковая строка игрока с показом пройденного пути по текущей сетке, кнопки прошлой или следующей турнирной сетки;",
+       "Улучшена страница профилей: табличный вид с удобными кнопками;",
+       "Улучшено внешнее оформление программы: свой дизайн шапки программы и логов;",
+       "Улучшена стабильность работы получения данных из интеграции start.gg;", 
+       "Исправлена ошибка с рендером интерфейса в разрешении 1280x720 пикселей;",
+       "Исправлена ошибка рендера связей у \"виджета сетки\";",
+       "Исправлена расинхронизация флагов-параметру у \"виджета сетки\";",
+       "Исправлена ошибка с отображением модального окна с успешным импортом профиля при отмене импорта;",
+       "Исправлена ошибка с переполнением запроса у интеграции start.gg;"
     ],
     "en": [
-        "New \"Match Score\" widget;",
-        "UI improvements, bug fixes, and more;"
+       "A new \"Scoreboard Widget\" has been added. It offers various customization options (zoom, adjusting the lengths of the bars and the spacing between them, specifying team names and logos, flags, resets, fonts, and font sizes), automatic text layout to fit the template, as well as the option to choose your own theme;",
+       "New features have been added to the \"Bracket Widget\": zoom buttons, a player search bar showing the path taken through the current bracket, and buttons for the previous or next tournament bracket;",
+       "The profile page has been improved: a table view with convenient buttons;",
+       "The program’s visual design has been improved: customizable header design and logos;",
+       "Improved stability when retrieving data from the start.gg integration;",
+       "Fixed a rendering error in the interface at a resolution of 1280x720 pixels;",
+       "Fixed a rendering error for connections in the \"bracket widget\";",
+       "Fixed desynchronization of parameter flags in the \"bracket widget\";",
+       "Fixed an issue with the display of the modal window indicating a successful profile import when the import was canceled;",
+       "Fixed a request overflow error in the start.gg integration;"
     ]
   }
 }
