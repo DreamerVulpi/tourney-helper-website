@@ -3,18 +3,20 @@
   "status": "planned",
   "date_range": "Q1 2027",
   "title": {
-    "ru": "Новый виджет, Система подсказок в UI;",
-    "en": "New widget, the UI's tooltip system"
+    "ru": "Новый виджет, Система подсказок в UI, Система горячих клавиш; ",
+    "en": "New widget, the UI's tooltip system, the software's hotkey system"
   },
   "details": {
     "ru": [
         "Новый виджет \"Электронная очередь\";",
         "Система подсказок в UI;",
+        "Система горячих клавиш в ПО;",
         "Улучшения использования UI, исправление багов и другое;"
     ],
     "en": [
         "New \"Electronic Queue\" widget;",
         "The UI's tooltip system;",
+        "The software's hotkey system",
         "UI improvements, bug fixes, and more;"
     ]
   }

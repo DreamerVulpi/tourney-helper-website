@@ -19,8 +19,8 @@
             "en": "Support for Third-Party Integrations"
         },
         "description": {
-            "ru": "Некоторые инструменты/виджеты используют данные с разных сервисов.",
-            "en": "Some tools/widgets use data from different services."
+            "ru": "Некоторые инструменты/виджеты используют данные с разных сервисов",
+            "en": "Some tools/widgets use data from different services"
         },
         "supportedIntegrations": [
             {
