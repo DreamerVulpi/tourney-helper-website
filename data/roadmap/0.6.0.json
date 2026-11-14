@@ -1,7 +1,9 @@
 {
   "version": "0.6.0",
-  "status": "testing",
-  "date_range": "2026-11",
+  "status": "released",
+  "date_range": "2026-11-14",
+  "download_url": "https://github.com/DreamerVulpi/tourney-helper/releases/download/v0.6.0/TourneyHelper-v0.6.0-Windows-x64.zip",
+  "current": true,
   "title": {
     "ru": "Новый виджет, улучшение функционала виджета сетки, улучшение ПО",
     "en": "New widget, improvements to the bracket widget's functionality, software improvements"
@@ -11,6 +13,7 @@
        "Добавлен новый виджет \"Виджет очков\". Имеются разные параметры для настройки (масштабирование, изменение длин плашек и отступов между ними, указание название команд и логотипов, флагов, ресетов, шрифты и их размеры), автоматическая верстка текста под размер плашки, а также возможность поставить свою тему;",
        "Добавлен новый функционал для \"виджета сетки\": кнопки приближения, поисковая строка игрока с показом пройденного пути по текущей сетке, кнопки прошлой или следующей турнирной сетки;",
        "Улучшена страница профилей: табличный вид с удобными кнопками;",
+       "У каждого виджета теперь 5 слотов для как у профилей для удобного переключения между несколькими оформлениями;",
        "Улучшено внешнее оформление программы: свой дизайн шапки программы и логов;",
        "Улучшена стабильность работы получения данных из интеграции start.gg;", 
        "Исправлена ошибка с рендером интерфейса в разрешении 1280x720 пикселей;",
@@ -23,11 +26,12 @@
        "A new \"Scoreboard Widget\" has been added. It offers various customization options (zoom, adjusting the lengths of the bars and the spacing between them, specifying team names and logos, flags, resets, fonts, and font sizes), automatic text layout to fit the template, as well as the option to choose your own theme;",
        "New features have been added to the \"Bracket Widget\": zoom buttons, a player search bar showing the path taken through the current bracket, and buttons for the previous or next tournament bracket;",
        "The profile page has been improved: a table view with convenient buttons;",
+       "Each widget now has 5 slots, just like profiles, for easy switching between multiple designs;",
        "The program’s visual design has been improved: customizable header design and logos;",
        "Improved stability when retrieving data from the start.gg integration;",
        "Fixed a rendering error in the interface at a resolution of 1280x720 pixels;",
-       "Fixed a rendering error for connections in the \"bracket widget\";",
-       "Fixed desynchronization of parameter flags in the \"bracket widget\";",
+       "Fixed a rendering error for connections in the \"Bracket Widget\";",
+       "Fixed desynchronization of parameter flags in the \"Bracket Widget\";",
        "Fixed an issue with the display of the modal window indicating a successful profile import when the import was canceled;",
        "Fixed a request overflow error in the start.gg integration;"
     ]
